@@ -7,23 +7,23 @@ import (
 	"github.com/EnricoPicci/hilberthotel"
 )
 
-func BusClerk(busNumber int, delay time.Duration) func(i int) hilberthotel.WelcomeKit {
+func BusClerk(busNumber int, delay time.Duration) func(keyNumber int) hilberthotel.WelcomeKit {
 	var count = 0
 	var passengerNumber = 1
 	var nextClerkCh func(i int) hilberthotel.WelcomeKit
 
-	return func(i int) hilberthotel.WelcomeKit {
+	return func(keyNumber int) hilberthotel.WelcomeKit {
 		count++
 		if count == passengerNumber {
 			passengerNumber++
 			count = 0
-			return hilberthotel.NewWelcomeKit(busNumber, passengerNumber-1, i, delay)
+			return hilberthotel.NewWelcomeKit(busNumber, passengerNumber-1, keyNumber, delay)
 		}
 
 		if nextClerkCh == nil {
 			nextClerkCh = BusClerk(busNumber+1, delay)
 		}
-		return nextClerkCh(i)
+		return nextClerkCh(keyNumber)
 	}
 }
 

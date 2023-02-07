@@ -2,6 +2,8 @@
 
 This repository contains concurrent and non concurrent Go implementations of the Hilbert's Hotel algorithm.
 
+A longer description of the concepts illustated here can be found in [this article](https://www.infoq.com/articles/concurrency-design-hilbert-problem-golang/) published on InfoQ.
+
 The main purpose is to show how concurrency is the result of design.
 
 ![Hilbert's Hotel](./assets/img/hilbert-hotel.png?raw=true).
